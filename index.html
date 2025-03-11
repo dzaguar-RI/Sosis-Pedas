@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOSIS GORENG PEDAS HARUS DAUN JERUK</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="script.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        .price {
+            font-size: 18px;
+            margin: 10px 0;
+            font-weight: bold;
+        }
+        input, select, button {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background: #25D366;
+            color: white;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background: #1da851;
+        }
+    </style>
+</head>
+<body>
+    <!-- Permasalahan -->
+    <section class="problem">
+        <h2>🔥 Sosis Goreng Kering Pedas Daun Jeruk – Gurih, Renyah, Nagih! 🔥</h2>
+        <p>Sensasi Pedas & Wangi Daun Jeruk dalam Setiap Gigitan!</p>
+        <div class="problem-container">
+            <img src="img/sosis3.jpg" alt="Dapur Berantakan">
+            <img src="img/sosis4.jpg" alt="Dapur Berantakan">
+        </div>
+    </section>
+    
+    <!-- Solusi dengan Gambar Slider -->
+    <section class="solution">
+        <h2>Mengapa Kamu Harus Coba Ini?</h2>
+        <div class="slider-container">
+            <div class="slider">
+                <img class="slide" src="img/sosis2.jpg" alt="Rak Susun 1">
+                <img class="slide" src="img/sosis5.jpg" alt="Rak Susun 2">
+            </div>
+        </div>
+        <p>✅ Rasa Pedas Menggigit – Cocok untuk pencinta pedas sejati!</p>
+        <p>✅ Aroma Daun Jeruk Segar – Bikin lebih wangi & menggugah selera.</p>
+        <p>✅ Dikemas Higienis & Siap Kirim – Cocok untuk dijual kembali atau dinikmati sendiri.</p>
+    </section>
+
+    <div class="container">
+        <h2>Pilih Paket Pembelian</h2>
+        <div class="cod">
+            <img class="cod" src="img/cod.jpg" alt="Rak Susun 1">
+        </div>
+        <select id="orderOption" onchange="updatePrice()">
+            <option value="2">Beli 2 Gratis 1, Kemasan 250 Gram - Rp 65.000</option>
+            <option value="1">Beli 1, Kemasan 250 Gram - Rp 30.000</option>
+        </select>
+        <div class="price" id="price">Total Harga: Rp 65.000</div>
+        
+        <input type="text" id="nama" placeholder="Nama Anda" required>
+        <input type="tel" id="wa" placeholder="Nomor WhatsApp" required>
+        
+        <button onclick="orderNow()">Pesan Sekarang</button>
+    </div>
+
+    <script>
+        
+        function updatePrice() {
+            let option = document.getElementById("orderOption").value;
+            let priceText = (option === "2") ? "Total Harga: Rp 65.000" : "Total Harga: Rp 30.000";
+            document.getElementById("price").textContent = priceText;
+        }
+
+        function orderNow() {
+            let nama = document.getElementById("nama").value;
+            let wa = document.getElementById("wa").value;
+            let option = document.getElementById("orderOption").value;
+            let paket = (option === "2") ? "Beli 2 Gratis 1, Kemasan 250 Gram - Rp 65.000" : "Beli 1, Kemasan 250 Gram - Rp 30.000";
+            
+            if (nama === "" || wa === "") {
+                alert("Harap isi Nama dan Nomor WhatsApp!");
+                return;
+            }
+            
+            let message = `Halo, saya ingin pesan:\nNama: ${nama}\nPaket: ${paket}\nNomor WA: ${wa}`;
+            let encodedMessage = encodeURIComponent(message);
+            window.location.href = `https://wa.me/6289506044987?text=${encodedMessage}`;
+        }
+    </script>
+    
+
+    
+</body>
+</html>
